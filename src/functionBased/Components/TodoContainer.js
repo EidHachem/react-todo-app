@@ -1,8 +1,9 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Header from './Header';
 import InputTodo from './InputTodo';
 import TodosList from './TodosList';
-import { v4 as uuidv4 } from 'uuid';
 
 const TodoContainer = () => {
   const [todos, setTodos] = useState(getInitialTodos());
@@ -22,17 +23,13 @@ const TodoContainer = () => {
   };
 
   const delTodo = (id) => {
-    setTodos([
-      ...todos.filter((todo) => {
-        return todo.id !== id;
-      }),
-    ]);
+    setTodos([...todos.filter((todo) => todo.id !== id)]);
   };
 
   const addTodoItem = (title) => {
     const newTodo = {
       id: uuidv4(),
-      title: title,
+      title,
       completed: false,
     };
     setTodos([...todos, newTodo]);
